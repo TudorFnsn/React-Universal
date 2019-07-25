@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
 
 
@@ -105,21 +105,21 @@ class App extends Component {
       // }
     }
 
-    const classes = []
+    const assignedClasses = []
 
     if (this.state.persons.length <= 2) {
-      classes.push('red') // classes = ['red']
+      assignedClasses.push(classes.red) // classes = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold ') // classes = ['red', 'bold']
+      assignedClasses.push(classes.bold) // classes = ['red', 'bold']
     }
 
     return (
       // we wrap all the app into the StyleRoot component for the Radium package to manipulate media queries 
       // (in the Person component) - if we use Radium localy - here it's erased because we start using scoped css components
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi</h1>
-          <p className={classes.join(' ')}>How many persons there are</p>
+          <p className={assignedClasses.join(' ')}>How many persons there are</p>
           {/* 2 methods to pass data as param to the method (cica ii mai bine cu bind) */}
           {/* sau asa cu anon. arrow function care returneaza apelul functiei cu param */}
           <button onClick={this.togglePersonHandler}
